@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+</head>
+<body>
+  <script>
+    // Your JavaScript goes here!
+
+    const maxHands = 3;
+    const numberOfGames = 5;
+
+
+
+    function computerPlay(){            // Randomly returns 'Rock','Paper', or 'Scissors'
+        let hand = ['Rock', 'Paper', 'Scissors']
+        let rand = Math.floor(Math.random() * hand.length)
+        return hand[rand]
+    }
+
+    function playRound(playerSelection, computerSelection){
+       // let playerSelection = window.prompt("Enter either rock, paper, or scissors: ");
+        //get('')
+        let playerSelectionLowercase = playerSelection.toLowerCase();
+        switch(playerSelectionLowercase){
+            case "rock":
+                if(computerSelection === 'rock'){
+                    return 'tie'
+                }
+                else if(computerSelection === 'paper'){
+                    return 'lose'
+                }
+                else if(computerSelection === 'scissors'){
+                    return 'win'
+                }
+                break;
+
+            case "paper":
+                if(computerSelection === 'rock'){
+                    return 'win'
+                }
+                else if(computerSelection === 'paper'){
+                    return 'tie'
+                }
+                else if(computerSelection === 'scissors'){
+                    return 'lose'
+                }
+                break;
+
+
+            case "scissors":
+                if(computerSelection === 'rock'){
+                    return 'lose'
+                }
+                else if(computerSelection === 'paper'){
+                    return 'win'
+                }
+                else if(computerSelection === 'scissors'){
+                    return 'tie'
+                }
+                break;
+        }
+    }
+
+    function game(){
+      let playerScore = 0;
+      let computerScore = 0;
+
+      for(let i = 0; i < numberOfGames; i++){
+        let playerSelection = prompt("Rock, paper, or scissors?");
+        let computerSelection = computerPlay();
+
+        switch(playRound(playerSelection, computerSelection)){
+            case "win":
+            {
+                console.log("You won this round!")
+                playerScore++;
+                break;
+            }
+            case "tie":
+            {
+                console.log("Tie!")
+                break;
+            }
+            case "lose":
+            {
+                console.log("You lost this round!")
+                computerScore++;
+                break;
+            }
+        }
+      }
+       playerScore > computerScore
+                ? console.log("You won the game!")
+                : console.log("You lost the game!")
+    }
+
+
+
+  </script>
+</body>
+</html>
